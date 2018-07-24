@@ -82,6 +82,7 @@ public class RequestHandler extends Thread {
                 if (!logined) {
                     log.debug("logined = " + logined);
                     responseResource(out, "/user/login.html");
+
                     return;
                 }
                 log.debug("logined = " + logined);
