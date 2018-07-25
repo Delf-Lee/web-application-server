@@ -10,7 +10,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 public class HttpRequestTest {
-    private String testDirectory = "./src/test/resources";
+    private String testDirectory = "./src/test/resources/";
 
     @Test
     public void requets_GET() throws Exception {
@@ -19,7 +19,7 @@ public class HttpRequestTest {
 
         assertEquals("GET", request.getMethod());
         assertEquals("/user/create", request.getPath());
-        assertEquals("keep-alive", request.getHeader("Connections"));
+        assertEquals("keep-alive", request.getHeader("Connection"));
         assertEquals("javajigi", request.getParameter("userId"));
     }
 
@@ -30,7 +30,7 @@ public class HttpRequestTest {
 
         assertEquals("POST", request.getMethod());
         assertEquals("/user/create", request.getPath());
-        assertEquals("keep-alive", request.getHeader("Connections"));
+        assertEquals("keep-alive", request.getHeader("Connection"));
         assertEquals("javajigi", request.getParameter("userId"));
     }
 
@@ -48,7 +48,7 @@ public class HttpRequestTest {
     public void create_path_and_params() throws IllegalAccessException {
         RequestLine line = new RequestLine("GET /user/create?userId=javajigi&password=pass HTTP/1.1");
         assertEquals("GET", line.getMethod());
-        assertEquals("user/create", line.getPath());
+        assertEquals("/user/create", line.getPath());
         Map<String, String> params = line.getParams();
         assertEquals(2, params.size());
     }
