@@ -25,7 +25,12 @@ public class HttpRequest {
             if (line == null) {
                 return;
             }
-            requestLine = new RequestLine(line);
+
+            try {
+                requestLine = new RequestLine(line);
+            } catch (IllegalAccessException e) {
+                log.error(e.getMessage());
+            }
 
             line = br.readLine();
             while (!line.equals("")) {
@@ -35,7 +40,7 @@ public class HttpRequest {
                 line = br.readLine();
             }
 
-            if (getMethod() == HttpMethod.POST) {
+            if (getMethod().isPost()) {
                 String body = IOUtils.readData(br, Integer.parseInt(headers.get("Content-Length")));
                 params = HttpRequestUtils.parseQueryString(body);
             } else {
@@ -43,8 +48,6 @@ public class HttpRequest {
             }
         } catch (IOException io) {
             log.error(io.getMessage());
-        } catch (IllegalAccessException e) {
-            log.error(e.getMessage());
         }
     }
 
@@ -63,4 +66,5 @@ public class HttpRequest {
     public String getParameter(String name) {
         return params.get(name);
     }
+
 }

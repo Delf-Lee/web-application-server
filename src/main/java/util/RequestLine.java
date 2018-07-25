@@ -21,7 +21,7 @@ public class RequestLine {
             throw new IllegalAccessException(requestLine + "이 형식에 맞지 않습니다.");
         }
         method = HttpMethod.valueOf(tokens[0]);
-        if (method == HttpMethod.POST) {
+        if (method.isPost()) {
             path = tokens[1];
             return;
         }

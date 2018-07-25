@@ -1,4 +1,5 @@
 import org.junit.Test;
+import util.HttpRequest;
 import util.HttpResponse;
 
 import java.io.File;
@@ -31,5 +32,6 @@ public class HttpResponseTest {
 
     private OutputStream createOutputStream(String filename) throws FileNotFoundException {
         return new FileOutputStream(new File(testDirectory + filename));
+
     }
 }
