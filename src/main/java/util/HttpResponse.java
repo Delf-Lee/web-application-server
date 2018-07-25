@@ -27,16 +27,17 @@ public class HttpResponse {
 
     public void forward(String url) {
         try {
-            byte[] body = Files.readAllBytes(new File("./webspp" + url).toPath());
-            if (url.endsWith("css")) {
+            byte[] body = Files.readAllBytes(new File("./webapp" + url).toPath());
+            if (url.endsWith(".css")) {
                 headers.put("Content-Type", "text/css");
             } else if (url.endsWith(".js")) {
                 headers.put("Content-Type", "application/javascript");
             } else {
-                headers.put("Content-Type", body.length + "");
-                response200Header(body.length);
-                responseBody(body);
+                headers.put("Content-Type", "text/html;charset=utf-8");
             }
+            headers.put("Content-Length", body.length + "");
+            response200Header(body.length);
+            responseBody(body);
         } catch (IOException e) {
             log.error(e.getMessage());
         }
@@ -46,7 +47,7 @@ public class HttpResponse {
 
     public void forwardBody(String body) {
         byte[] contents = body.getBytes();
-        headers.put("Content-Type", "text/html;charset=urf-8)");
+        headers.put("Content-Type", "text/html;charset=utf-8");
         headers.put("Content-Type", contents.length + "");
         response200Header(contents.length);
         responseBody(contents);
