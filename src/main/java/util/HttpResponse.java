@@ -41,8 +41,6 @@ public class HttpResponse {
         } catch (IOException e) {
             log.error(e.getMessage());
         }
-
-
     }
 
     public void forwardBody(String body) {
