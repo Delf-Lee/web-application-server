@@ -17,7 +17,7 @@ public class HttpRequestTest {
         InputStream in = new FileInputStream(new File(testDirectory + "Http_GET.txt"));
         HttpRequest request = new HttpRequest(in);
 
-        assertEquals("GET", request.getMethod());
+        assertEquals("GET", request.getMethod().toString());
         assertEquals("/user/create", request.getPath());
         assertEquals("keep-alive", request.getHeader("Connection"));
         assertEquals("javajigi", request.getParameter("userId"));
@@ -28,7 +28,7 @@ public class HttpRequestTest {
         InputStream in = new FileInputStream(new File(testDirectory + "Http_POST.txt"));
         HttpRequest request = new HttpRequest(in);
 
-        assertEquals("POST", request.getMethod());
+        assertEquals("POST", request.getMethod().toString());
         assertEquals("/user/create", request.getPath());
         assertEquals("keep-alive", request.getHeader("Connection"));
         assertEquals("javajigi", request.getParameter("userId"));
@@ -37,7 +37,7 @@ public class HttpRequestTest {
     @Test
     public void create_method() throws IllegalAccessException {
         RequestLine line = new RequestLine("GET /index.html HTTP/1.1");
-        assertEquals("GET", line.getMethod());
+        assertEquals("GET", line.getMethod().toString());
         assertEquals("/index.html", line.getPath());
 
         line = new RequestLine("POST /index.html HTTP/1.1");
@@ -47,7 +47,7 @@ public class HttpRequestTest {
     @Test
     public void create_path_and_params() throws IllegalAccessException {
         RequestLine line = new RequestLine("GET /user/create?userId=javajigi&password=pass HTTP/1.1");
-        assertEquals("GET", line.getMethod());
+        assertEquals("GET", line.getMethod().toString());
         assertEquals("/user/create", line.getPath());
         Map<String, String> params = line.getParams();
         assertEquals(2, params.size());
