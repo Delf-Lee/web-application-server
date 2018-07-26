@@ -1,6 +1,7 @@
+package http;
+
 import org.junit.Test;
-import util.HttpRequest;
-import util.HttpResponse;
+import http.HttpResponse;
 
 import java.io.File;
 import java.io.FileNotFoundException;

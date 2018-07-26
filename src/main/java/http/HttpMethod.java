@@ -1,4 +1,4 @@
-package util;
+package http;
 
 public enum HttpMethod {
     GET,

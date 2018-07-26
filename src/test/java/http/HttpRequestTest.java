@@ -1,6 +1,8 @@
-import util.RequestLine;
+package http;
+
+import http.RequestLine;
 import org.junit.Test;
-import util.HttpRequest;
+import http.HttpRequest;
 
 import java.io.File;
 import java.io.FileInputStream;

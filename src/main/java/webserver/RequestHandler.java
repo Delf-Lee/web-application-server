@@ -7,8 +7,8 @@ import controller.Controller;
 import controller.RequestMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.HttpRequest;
-import util.HttpResponse;
+import http.HttpRequest;
+import http.HttpResponse;
 
 public class RequestHandler extends Thread {
     private static final Logger log = LoggerFactory.getLogger(RequestHandler.class);
@@ -42,7 +42,7 @@ public class RequestHandler extends Thread {
 
     private String getDefaultPath(String path) {
         if (path.equals("/")) {
-            return "index.html";
+            return "/index.html";
         }
         return path;
     }
